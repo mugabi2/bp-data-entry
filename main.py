@@ -7,9 +7,10 @@ from supabase import create_client, Client
 # -------------------------
 # SUPABASE CONFIG
 # -------------------------
-SUPABASE_URL = "https://vtjpurzleowqhwmftggb.supabase.co"  # your actual URL
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ0anB1cnpsZW93cWh3bWZ0Z2diIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNzc1MDksImV4cCI6MjA3ODY1MzUwOX0.AyWP7-o0BkATjglzN0INJEAK1EUokSdYaYSU80F7wwM"  # your actual service role key
-BUCKET_NAME = "matchday-data"
+# Load from secrets
+SUPABASE_URL = st.secrets["SUPABASE_URL"]
+SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
+BUCKET_NAME = st.secrets["BUCKET_NAME"]
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
