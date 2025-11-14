@@ -3,14 +3,16 @@ import pandas as pd
 import re
 import os
 from supabase import create_client, Client
+from dotenv import load_dotenv
+load_dotenv()
 
 # -------------------------
 # SUPABASE CONFIG
 # -------------------------
 # Load from secrets
-SUPABASE_URL = st.secrets["SUPABASE_URL"]
-SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
-BUCKET_NAME = st.secrets["BUCKET_NAME"]
+SUPABASE_URL = st.secrets.get("SUPABASE_URL", os.getenv("SUPABASE_URL"))
+SUPABASE_KEY = st.secrets.get("SUPABASE_KEY", os.getenv("SUPABASE_KEY"))
+BUCKET_NAME = st.secrets.get("BUCKET_NAME", os.getenv("BUCKET_NAME"))
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
